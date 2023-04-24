@@ -3,4 +3,4 @@ void GreetUser();
 int MainMenu();
 int DisplayMenu(); 
 int DisplayBalance(); 
-int DisplayTXHistory(); 
+int DisplayTXHistory();
