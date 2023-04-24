@@ -2,8 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "security.h"
-#include "globals.h"
+
 
 void RegisterUser(){
     char fName[30];
@@ -24,7 +23,7 @@ void RegisterUser(){
     scanf(" %s", lName);
 
     printf("Date of birth (dd/mm/yy): ");
-    scanf(" %d%*/%d%*/%d", &dDOB, &mDOB, &yDOB);
+    scanf(" %d %*/ %d %*/ %d", &dDOB, &mDOB, &yDOB);
 
     printf("Residential address No.: ");
     scanf(" %d", &addressNo);
@@ -58,28 +57,9 @@ void RegisterUser(){
     lName[15] = '\0';
     sscanf(lName, "%[^_]_ %s", lName, fName);
 
-    
 
-    EncryptInt(&dDOB);
-    EncryptInt(&mDOB);
-    EncryptInt(&yDOB);
-    EncryptInt(&addressNo);
-    EncryptInt(&postCode);
-
-    EncryptData(fName);
-    EncryptData(lName);
-    EncryptData(addressSt);
-    EncryptData(password);
-
-    fprintf(customerInfo, "%s %s %d%d%d %d %s %d %s", fName, lName, dDOB, mDOB, 
+    fprintf(customerInfo, "%s %s %d %d %d %d %s %d %s", fName, lName, dDOB, mDOB, 
    yDOB, addressNo , addressSt, postCode, password);
-
-    fclose(customerInfo);
-    free(&dDOB);
-    free(&mDOB);
-    free(&yDOB);
-    free(&addressNo);
-    free(&postCode);
 
     printf("Account Created, welcome to MockBank!");
 
