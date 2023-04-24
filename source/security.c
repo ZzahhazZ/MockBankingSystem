@@ -13,7 +13,7 @@ void EncryptData(char *data){
 void EncryptInt(int *data){
 
     *data += 64;
-    data = (int*) malloc(sizeof(int));
+    
 }
 
 
@@ -29,6 +29,6 @@ void DecryptData(char *data){
 
 void DecryptInt(int *data){
     *data -= 64;
-    data = (int*) malloc(sizeof(int));
+
 }
 int CheckCredentials();

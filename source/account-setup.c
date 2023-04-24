@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
 #include "security.h"
 #include "globals.h"
 
@@ -15,6 +16,7 @@ void RegisterUser(){
     int dDOB;
     int mDOB;
     int yDOB;
+    int customerNumber;
     char *format = ".txt";
 
     printf("First name: ");
@@ -38,28 +40,26 @@ void RegisterUser(){
     printf("Password: ");
     scanf(" %s", password);
 
-    /*Changes the last character to an underscore and then concatenates 
-    the first name with the last name and then also with the format type
-    to create a filename in the format LastName_FirstName.format*/
-    size_t lNameLen = strlen(lName);
-    lName[lNameLen] = '_';
-    lName[lNameLen+1] = '\0';
+
+    //sets a random value for the customer number then formats to a string to be passed as a file name.
+    srand(time(NULL));
+    customerNumber = rand();
+    int length = snprintf(NULL, 0, "%d", customerNumber);
+    char customerNumberStr[length+1];
+    snprintf(customerNumberStr, length+1, "%d", customerNumber);
     
-    strcat(lName, fName);
-    strcat(lName, format);
+    strcat(customerNumberStr, format);
     
-    char *filename = lName;
+    char *filename = customerNumberStr;
     
     //changes directory to where the customer files are saved to
     chdir("W:/CPrograms/Banking System/Source Code/customers");
     FILE *customerInfo = fopen(filename, "w");
 
     //resets the names back to their original form for encryption
-    lName[15] = '\0';
-    sscanf(lName, "%[^_]_ %s", lName, fName);
+    customerNumberStr[strlen(customerNumberStr) - 4] = '\0';
 
     
-
     EncryptInt(&dDOB);
     EncryptInt(&mDOB);
     EncryptInt(&yDOB);
@@ -71,12 +71,12 @@ void RegisterUser(){
     EncryptData(addressSt);
     EncryptData(password);
 
-    fprintf(customerInfo, "%s %s %d %d %d %d %s %d %s", fName, lName, dDOB, mDOB, 
+    fprintf(customerInfo, "%s %s %02d %02d %02d %d %s %d %s", fName, lName, dDOB, mDOB, 
    yDOB, addressNo , addressSt, postCode, password);
 
     fclose(customerInfo);
 
-    printf("Account Created, welcome to MockBank!");
+    printf("Account Created, your customer number for logging in is: %d \nwelcome to MockBank!", customerNumber);
 
 }
 void CreateUserFiles();
