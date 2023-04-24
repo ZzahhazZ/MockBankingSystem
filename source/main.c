@@ -22,7 +22,7 @@ int main(){
     int mDOB;
     int yDOB;
 
-   fscanf(customerFile, "%s %s %c%c%c %c %s %c %s", fName, lName, &dDOB, &mDOB, 
+   fscanf(customerFile, " %s %s %d %d %d %d %s %d %s", fName, lName, &dDOB, &mDOB, 
    &yDOB, &addressNo , addressSt, &postCode, password);
    
    DecryptData(fName);
@@ -39,13 +39,9 @@ int main(){
 
   
 
-   printf("%s\n%s\n%s\n%d/%d/%d\n%d\n%d\n %s", fName, lName, addressSt, dDOB, mDOB, yDOB, addressNo, postCode, password);
+   printf("\n%s\n%s\n%s\n%s\n", fName, lName, addressSt,  password);
+   printf("%d %d %d\n%d\n%d",dDOB, mDOB, yDOB, addressNo, postCode);
 
-   free(&dDOB);
-    free(&mDOB);
-    free(&yDOB);
-    free(&addressNo);
-    free(&postCode);
     fclose(customerFile);
     
 

@@ -71,15 +71,10 @@ void RegisterUser(){
     EncryptData(addressSt);
     EncryptData(password);
 
-    fprintf(customerInfo, "%s %s %d%d%d %d %s %d %s", fName, lName, dDOB, mDOB, 
+    fprintf(customerInfo, "%s %s %d %d %d %d %s %d %s", fName, lName, dDOB, mDOB, 
    yDOB, addressNo , addressSt, postCode, password);
 
     fclose(customerInfo);
-    free(&dDOB);
-    free(&mDOB);
-    free(&yDOB);
-    free(&addressNo);
-    free(&postCode);
 
     printf("Account Created, welcome to MockBank!");
 
