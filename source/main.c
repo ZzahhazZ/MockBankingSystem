@@ -6,7 +6,10 @@
 #include <stdlib.h>
 
 int main(){
+
+   RegisterUser();
+   
     
-    RegisterUser();
+
    
 }

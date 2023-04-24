@@ -26,7 +26,7 @@ void RegisterUser(){
     scanf(" %s", lName);
 
     printf("Date of birth (dd/mm/yy): ");
-    scanf(" %d%*/%d%*/%d", &dDOB, &mDOB, &yDOB);
+    scanf(" %d %*/ %d %*/ %d", &dDOB, &mDOB, &yDOB);
 
     printf("Residential address No.: ");
     scanf(" %d", &addressNo);
