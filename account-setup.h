@@ -1,0 +1,2 @@
+void RegisterUser();
+void CreateUserFiles();
