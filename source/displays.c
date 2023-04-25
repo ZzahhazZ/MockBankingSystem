@@ -6,7 +6,7 @@
 #include "account-setup.h"
 #include "security.h"
 
-int LoginScreen(){
+void LoginScreen(){
     int userchoice;
     char clientNum[10];
     int looper = 0;
@@ -26,7 +26,6 @@ int LoginScreen(){
 
     if(customerFile == NULL){
         printf("there was an issue accessing your file, exiting program.");
-        return 1;
     }
 
     while(!looper)
@@ -34,12 +33,10 @@ int LoginScreen(){
         looper = CheckCredentials(customerFile);
     }
 
-
-
-
+    GreetUser(customerFile)
 
 }
-void GreetUser();
-int MainMenu();
+void GreetUser(FILE *customerFile);
+int MainMenu(FILE *customerFile);
 int DisplayBalance(); 
 int DisplayTXHistory();

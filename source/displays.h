@@ -1,4 +1,4 @@
-int LoginScreen();
+void LoginScreen();
 void GreetUser();
 int MainMenu();
 int DisplayMenu(); 
