@@ -17,7 +17,6 @@ void RegisterUser(){
     int mDOB;
     int yDOB;
     int customerNumber;
-    char *format = ".txt";
 
     printf("First name: ");
     scanf(" %s", fName);
@@ -48,12 +47,12 @@ void RegisterUser(){
     char customerNumberStr[length+1];
     snprintf(customerNumberStr, length+1, "%d", customerNumber);
     
-    strcat(customerNumberStr, format);
+    strcat(customerNumberStr, FILE_EXT);
     
     char *filename = customerNumberStr;
     
     //changes directory to where the customer files are saved to
-    chdir("W:/CPrograms/Banking System/Source Code/customers");
+    chdir(CUSTOMER_STORAGE);
     FILE *customerInfo = fopen(filename, "w");
 
     //resets the names back to their original form for encryption

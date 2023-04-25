@@ -43,11 +43,13 @@ int CheckCredentials(FILE *customerFile){
     char password[30];
     char inputPassword[30];
 
-    fscanf(customerFile, "%s %s %d %d %d %d %s %d %s",  fName, lName, dDOB, mDOB, 
-   yDOB, addressNo , addressSt, postCode, password);
+    fscanf(customerFile, "%s %s %d %d %d %d %s %d %s",  fName, lName, &dDOB, &mDOB, 
+   &yDOB, &addressNo , addressSt, &postCode, password);
 
     printf("What is your password?: ");
     scanf(" %s", inputPassword);
+
+    DecryptData(password);
 
     size_t size = sizeof(password) / sizeof(password[0]);
     if(!strncmp(password, inputPassword, size))

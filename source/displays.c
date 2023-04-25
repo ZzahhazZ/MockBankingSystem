@@ -8,7 +8,7 @@
 
 void LoginScreen(){
     int userchoice;
-    char clientNum[10];
+    int clientNum;
     int looper = 0;
     printf("Welcome to Mock Bank, are you a returning customer (1) or a new one (0)? ");
     scanf(" %d", &userchoice);
@@ -16,9 +16,15 @@ void LoginScreen(){
         RegisterUser();
     }
     printf("What is your Client Number?: ");
-    scanf(" %s", clientNum);
+    scanf(" %d", &clientNum);
 
-    char *filename = strcat(clientNum, FILE_EXT);
+    int length = snprintf(NULL, 0, "%d", clientNum);
+    char strClientNum[length + 1];
+    snprintf(strClientNum, length + 1, "%d", clientNum);
+
+    strcat(strClientNum, FILE_EXT);
+
+    char *filename = strClientNum;
 
     chdir(CUSTOMER_STORAGE);
 
@@ -32,8 +38,6 @@ void LoginScreen(){
     {
         looper = CheckCredentials(customerFile);
     }
-
-    GreetUser(customerFile)
 
 }
 void GreetUser(FILE *customerFile);
